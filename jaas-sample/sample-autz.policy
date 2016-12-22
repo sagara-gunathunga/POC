@@ -1,0 +1,29 @@
+/** Java 2 Access Control Policy for the JAAS Sample Application **/
+
+/* grant the sample LoginModule permissions */
+grant codebase "file:./target/jaas-sample-1.0.0.jar" {
+    permission javax.security.auth.AuthPermission "modifyPrincipals";
+};
+
+grant codebase "file:./target/jaas-sample-1.0.0.jar" {
+
+   permission javax.security.auth.AuthPermission "createLoginContext.Sample";
+   permission javax.security.auth.AuthPermission "doAsPrivileged";
+   permission javax.security.auth.AuthPermission "getSubject";
+   permission java.util.PropertyPermission "java.home", "read";
+
+};
+
+
+/** User-Based Access Control Policy for the SampleAction class
+ ** instantiated by SampleAzn
+ **/
+
+grant	codebase "file:./target/jaas-sample-1.0.0.jar",
+	Principal org.sample.jaas.authentication.SamplePrincipal "testUser" {
+
+   permission java.util.PropertyPermission "java.home", "read";
+   permission java.util.PropertyPermission "user.home", "read";
+   permission java.io.FilePermission "foo.txt", "read";
+};
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+
+       xsi:schemaLocation="http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+    <jaxrs:server address="/">
+        <jaxrs:serviceBeans>
+            <bean class="org.sample.server.basic.Hello"/>
+            <bean class="org.sample.server.basic.Hi"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <bean id="requestHeaderFilter" class="org.sample.server.basic.filter.LogHeaderRequestFilter"/>
+            <bean id="responseHeaderFilter" class="org.sample.server.basic.filter.LogHeaderResponseFilter"/>
+            <bean id="requestFilter" class="org.sample.server.basic.filter.LogRequestFilter"/>
+            <bean id="responseFilter" class="org.sample.server.basic.filter.LogResponseFilter"/>
+            <bean id="preMatchFilter" class="org.sample.server.basic.filter.PreMatchRequestFilter"/>
+            <bean id="firstAuthN" class="org.sample.server.basic.mockfilter.FirstAuthenticationFilter"/>
+            <bean id="secondAuthN" class="org.sample.server.basic.mockfilter.SecondAuthenticationFilter"/>
+            <bean id="firstAuthZ" class="org.sample.server.basic.mockfilter.FirstAuthorizationFilter"/>
+            <bean id="secondAuthZ" class="org.sample.server.basic.mockfilter.SecondAuthorizationFilter"/>
+
+
+        </jaxrs:providers>
+    </jaxrs:server>
+</beans>
