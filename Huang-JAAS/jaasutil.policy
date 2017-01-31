@@ -1,0 +1,18 @@
+/** Java 2 Access Control Policy for the JAAS Sample Application **/
+
+/* for JAAS */
+grant { 
+   permission java.io.FilePermission "./jaasutil_config.xml", "read";
+   permission javax.security.auth.AuthPermission "createLoginContext.JaasUtil";
+   permission javax.security.auth.AuthPermission "doAsPrivileged";
+   permission java.security.SecurityPermission  "getPolicy";
+   permission java.util.PropertyPermission "com.auth.config", "read";
+
+};
+
+
+/* Grant all Java 2 extensions AllPermission */
+grant codeBase "file:${java.home}/lib/ext/*" {
+	permission java.security.AllPermission;
+};
+

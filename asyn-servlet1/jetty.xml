@@ -1,0 +1,13 @@
+<!--<Configure id="Server" class="org.eclipse.jetty.server.Server">-->
+
+    <!--&lt;!&ndash; =========================================================== &ndash;&gt;-->
+    <!--&lt;!&ndash; Configure the Server Thread Pool.                           &ndash;&gt;-->
+    <!--&lt;!&ndash;                                                             &ndash;&gt;-->
+    <!--&lt;!&ndash; Consult the javadoc of o.e.j.util.thread.QueuedThreadPool   &ndash;&gt;-->
+    <!--&lt;!&ndash; for all configuration that may be set here.                 &ndash;&gt;-->
+    <!--&lt;!&ndash; =========================================================== &ndash;&gt;-->
+    <!--<Get name="ThreadPool">-->
+        <!--<Set name="minThreads" type="int">1</Set>-->
+        <!--<Set name="maxThreads" type="int">1</Set>-->
+    <!--</Get>-->
+<!--</Configure>-->

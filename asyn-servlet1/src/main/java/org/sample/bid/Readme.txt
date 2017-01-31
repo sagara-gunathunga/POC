@@ -1,0 +1,1 @@
+http://localhost:8080/bid?id=3&dispatch=true&timeout=false

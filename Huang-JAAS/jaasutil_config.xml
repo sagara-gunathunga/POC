@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<jaasAuth>
+	<authentication>
+		<loginAdapter class="com.jdj.jaas.LoginDBSourceAdapter"/>
+		<initParam name="driver"  value="com.mysql.jdbc.Driver" />
+		<initParam name="url"  value="jdbc:mysql:///mydb" />
+		<initParam name="user"  value="mydb" />
+		<initParam name="password"  value="mydb" />
+	</authentication>
+	<authorization>
+		<permissionAdapter class="com.jdj.jaas.PermissionRoleDBAdapter"/>
+		<initParam name="driver"  value="com.mysql.jdbc.Driver" />
+		<initParam name="url"  value="jdbc:mysql:///mydb" />
+		<initParam name="user"  value="mydb" />
+		<initParam name="password"  value="mydb" />
+	</authorization>
+</jaasAuth>

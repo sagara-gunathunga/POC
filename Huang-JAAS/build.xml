@@ -1,0 +1,65 @@
+<project name="JAASSample" default="dist" basedir=".">
+
+  <!-- set global properties for this build -->
+  <property name="src" value="./src"/>
+  <property name="build" value="build"/>
+  <property name="dist"  value="dist"/>
+  <property name="jaasext.jar"  value="jaasutil.jar"/>
+  <property name="test.jar"  value="test.jar"/>
+  <property name="lib.dir"  value="${lib.home}"/>
+  <property name="JRE" value="C:/j2sdk1.4.1/jre" />
+  <property name="xerces.dir"  value="C:/xalan22D14/bin"/>
+  <property name="dbdriver.dir"  value="D:/lib"/>
+  <property name="dbpath"  value="${dbdriver.dir}/mysql-connector-java-3.0.5-gamma/mysql-connector-java-3.0.5-gamma-bin.jar"/>
+
+
+  <path id="classpath">
+  	<fileset dir="${xerces.dir}">
+        <include name="xerces.jar"/>
+	</fileset>
+  	<fileset dir="${dbdriver.dir}">
+        <include name="mysql-connector-java-3.0.5-gamma/mysql-connector-java-3.0.5-gamma-bin.jar"/>
+	</fileset>
+  </path>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init">
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}" debug="on"/>
+  </target>
+
+  <target name="dist" depends="compile">
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}/lib"/>
+
+    <!-- create the jar file for userauth -->
+     <jar jarfile="${dist}/lib/${jaasext.jar}" basedir="${build}" includes="com/**" excludes="test/**"/>
+
+    <!-- put the test in the test jar -->
+    <jar jarfile="${dist}/lib/${test.jar}" basedir="${build}"  includes="test/**" excludes="com/**"/>
+ </target>
+
+  <target name="deploy" depends="dist">
+  	<copy file="${dist}/lib/${jaasext.jar}" todir="${JRE}/lib/ext" />
+  </target>
+
+  <target name="all" depends="deploy">
+
+  </target>
+
+
+
+
+  <target name="clean">
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+</project>
+
